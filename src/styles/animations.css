@@ -1,0 +1,64 @@
+/* ═══════════════════════════════════════════════
+   BREATHING CIRCLE ANIMATIONS
+   CSS keyframes synced to 4-7-8 timing
+   ═══════════════════════════════════════════════ */
+
+/* INHALE — 4 seconds — Circle expands */
+.circle--inhale {
+  animation: breatheIn 4s ease-in-out forwards;
+}
+
+/* HOLD — 7 seconds — Circle static with pulsing glow */
+.circle--hold {
+  animation: holdGlow 2.33s ease-in-out infinite;
+  transform: scale(1.4);
+  opacity: 1;
+}
+
+/* EXHALE — 8 seconds — Circle shrinks */
+.circle--exhale {
+  animation: breatheOut 8s ease-in-out forwards;
+}
+
+@keyframes breatheIn {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.7;
+    box-shadow: 0 0 20px 4px var(--circle-glow);
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 1;
+    box-shadow: 0 0 40px 12px var(--circle-glow-strong);
+  }
+}
+
+@keyframes breatheOut {
+  0% {
+    transform: scale(1.4);
+    opacity: 1;
+    box-shadow: 0 0 40px 12px var(--circle-glow-strong);
+  }
+  100% {
+    transform: scale(0.6);
+    opacity: 0.7;
+    box-shadow: 0 0 20px 4px var(--circle-glow);
+  }
+}
+
+@keyframes holdGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px 8px var(--circle-glow);
+  }
+  50% {
+    box-shadow: 0 0 50px 20px var(--circle-glow-strong);
+  }
+}
+
+/* ─── Ambient particles for session screen ─────── */
+@keyframes drift {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.3; }
+  90% { opacity: 0.3; }
+  100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
+}
